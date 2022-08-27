@@ -1,16 +1,38 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Angular JS Tutorial</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="content/css/styles.css">
-        <script src="app/lib/angularjs.min.js"></script>
-    </head>
-    <body>
+<html ng-app="myNinjaApp">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Angular JS Tutorial</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="content/css/styles.css" />
+    <script src="app/lib/angularjs.min.js"></script>
+    <script src="app/app.js"></script>
+  </head>
 
-        <script src="" async defer></script>
-    </body>
+  <body ng-init="ninjas=['yoshi','crystal','ryu','shaun']">
+    <input
+      type="text"
+      ng-model="favMeal"
+      placeholder="Enter your favourite meal"
+    />
+    <p>Your favorite meal is {{favMeal}}</p>
+    <p>Outside Ninja Controller</p>
+    <ul>
+      <li ng-repeat="ninja in ninjas">{{ninja}}</li>
+    </ul>
+    <p>From Ninja Controller</p>
+    <div ng-controller="NinjaController">
+      <input type="text" ng-model="search" placeholder="Search here..." />
+      <p>{{message}}</p>
+      <ul>
+        <li ng-repeat="ninja in ninjas|orderBy:'name'|filter:search">
+          {{ninja.name}} - {{ninja.rate|currency}}
+        </li>
+      </ul>
+    </div>
+
+    <script src="" async defer></script>
+  </body>
 </html>
