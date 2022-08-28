@@ -8,11 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="content/css/styles.css" />
     <script src="app/lib/angularjs.min.js"></script>
+    <script src="app/lib/angular-route.min.js"></script>
     <script src="app/app.js"></script>
   </head>
 
-  <body ng-init="ninjas=['yoshi','crystal','ryu','shaun']">
-    <input
+  <body>
+    <!--<ng-include src="'header.html'"></ng-include>-->
+    <header ng-include="'header.html'"></header>
+    <main ng-view></main>
+    
+    <!--<input
       type="text"
       ng-model="favMeal"
       placeholder="Enter your favourite meal"
@@ -22,17 +27,8 @@
     <ul>
       <li ng-repeat="ninja in ninjas">{{ninja}}</li>
     </ul>
-    <p>From Ninja Controller</p>
-    <div ng-controller="NinjaController">
-      <input type="text" ng-model="search" placeholder="Search here..." />
-      <p>{{message}}</p>
-      <ul>
-        <li ng-repeat="ninja in ninjas|orderBy:'name'|filter:search">
-          {{ninja.name}} - {{ninja.rate|currency}}
-        </li>
-      </ul>
-    </div>
-
+    <p>From Ninja Controller</p>-->
+    
     <script src="" async defer></script>
   </body>
 </html>
