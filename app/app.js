@@ -1,8 +1,11 @@
 var myNinjaApp = angular.module("myNinjaApp", ["ngRoute", "ngAnimate"]);
 
 myNinjaApp.config([
-  "$routeProvider",
-  function ($routeProvider) {
+  "$routeProvider",'$locationProvider',
+  function ($routeProvider,$locationProvider) {
+
+    $locationProvider.html5Mode(true);
+    
     $routeProvider
       .when("/home", {
         templateUrl: "views/home.html",
@@ -10,7 +13,11 @@ myNinjaApp.config([
       })
       .when("/contact", {
         templateUrl: "views/contact.html",
-        controller: "NinjaController",
+        controller: "ContactController",
+      })
+      .when("/contact-success", {
+        templateUrl: "views/contact-success.html",
+        controller: "ContactController",
       })
       .when("/directory", {
         templateUrl: "views/directory.html",
@@ -104,4 +111,10 @@ myNinjaApp.controller("NinjaController", [
     // ];
     //console.log(angular.toJson($scope.ninjas));
   },
+  
 ]);
+myNinjaApp.controller('ContactController',['$scope','$location',function($scope,$location){
+  $scope.sendMessage=function(){
+    $location.path('/contact-success');
+  }
+}])

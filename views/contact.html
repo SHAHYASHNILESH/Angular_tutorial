@@ -1,5 +1,5 @@
 <div class="content">
-    <form name="contactForm" novalidate>
+    <form name="contactForm" ng-submit="sendMessage()" novalidate>
         <input type="text" placeholder="Enter your name" name="name" ng-model="contact.name" ng-required="true"/>
         <div ng-show="contactForm.name.$touched && contactForm.name.$invalid">
             <small style="color:red;display:block;text-align:center">Enter a valid name</small>
